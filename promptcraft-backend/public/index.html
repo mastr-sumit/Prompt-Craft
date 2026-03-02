@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PromptCraft — AI Prompt Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="amb a"></div>
+  <div class="amb b"></div>
+  <div class="amb c"></div>
+
+  <header>
+    <div class="hdr">
+      <div class="logo">
+        <div class="logo-box">⚡</div>
+        Prompt<em>Craft</em>
+      </div>
+      <div class="hdr-right">
+        <div class="hdr-pill">AI PROMPT STUDIO</div>
+        <div class="hdr-pill" style="color: var(--a3); border-color: rgba(91,249,195,.3);">✦ FREE TO USE</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+
+    <section class="hero">
+      <div class="hero-eyebrow">
+        <span class="hero-dot"></span>
+        AI + TEMPLATE POWERED
+      </div>
+      <h1>Craft Prompts That<br><span>Actually Work</span></h1>
+      <p class="hero-p">
+        Type keywords or a description, pick your AI tool, and get studio-quality prompts —
+        powered by AI and battle-tested templates. 100% free, no signup needed.
+      </p>
+    </section>
+
+    <div class="sec-lbl">01 — SELECT YOUR AI TOOL</div>
+    <div class="tool-strip" id="toolStrip"></div>
+
+    <div class="sec-lbl">02 — BUILD YOUR PROMPT</div>
+    <div class="panel-wrap">
+
+      <div class="input-panel">
+        <div class="ip-header">
+          <div class="ip-label">
+            YOUR IDEA FOR:
+            <span class="tool-badge" id="activeBadge">Veo 3</span>
+          </div>
+          <div class="mode-toggle">
+            <button class="mode-btn active" onclick="setMode('ai', this)">✦ AI</button>
+            <button class="mode-btn"        onclick="setMode('template', this)">⊞ Template</button>
+            <button class="mode-btn"        onclick="setMode('both', this)">⊕ Both</button>
+          </div>
+        </div>
+
+        <textarea id="kw" placeholder="e.g. dragon flying over neon-lit Tokyo, golden hour, epic aerial shot…" rows="5"></textarea>
+
+        <div class="ip-tags" id="ipTags"></div>
+
+        <div class="ip-footer">
+          <div class="opts">
+            <div class="opt">
+              <span class="opt-lbl">STYLE</span>
+              <select id="selStyle">
+                <option>Cinematic</option><option>Photorealistic</option>
+                <option>Artistic</option><option>Dark Fantasy</option>
+                <option>Anime</option><option>Abstract</option>
+                <option>Minimalist</option><option>Vintage</option>
+                <option>Sci-Fi</option><option>Surrealist</option>
+              </select>
+            </div>
+            <div class="opt">
+              <span class="opt-lbl">COUNT</span>
+              <select id="selCount">
+                <option value="3">3 prompts</option>
+                <option value="1">1 prompt</option>
+                <option value="5">5 prompts</option>
+              </select>
+            </div>
+            <div class="opt">
+              <span class="opt-lbl">LENGTH</span>
+              <select id="selLen">
+                <option value="detailed">Detailed</option>
+                <option value="medium">Medium</option>
+                <option value="short">Short</option>
+              </select>
+            </div>
+          </div>
+          <button class="gen-btn" id="genBtn" onclick="generate()">
+            <div class="spinner" id="spin"></div>
+            <span class="btn-txt">Generate ⚡</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="tmpl-panel" id="tmplPanel">
+        <div class="tmpl-title"><span>⊞</span> Template Builder</div>
+        <div class="tmpl-fields" id="tmplFields"></div>
+        <div>
+          <div class="tf-lbl" style="margin-bottom:6px">PREVIEW</div>
+          <div class="tmpl-preview" id="tmplPreview">Fill in the fields above to preview your template prompt…</div>
+        </div>
+        <button class="use-tmpl-btn" onclick="useTemplate()">↓ Use as Input</button>
+      </div>
+
+    </div>
+
+    <div class="output-wrap" id="outWrap">
+      <div class="out-header">
+        <div class="out-title">
+          GENERATED PROMPTS
+          <span class="out-badge" id="outBadge">0 results</span>
+        </div>
+        <div class="out-acts">
+          <button class="act-btn" onclick="copyAll()">📋 Copy All</button>
+          <button class="act-btn" onclick="regen()">↻ Regenerate</button>
+          <button class="act-btn" onclick="exportTxt()">↓ Export .txt</button>
+        </div>
+      </div>
+      <div class="prompts-grid" id="pGrid"></div>
+    </div>
+
+    <div class="hist-section" id="histSec" style="display:none">
+      <div class="hist-hdr">
+        <div class="hist-ttl">Recent Generations</div>
+        <button class="hist-clear" onclick="clearHist()">Clear All</button>
+      </div>
+      <div class="hist-grid" id="histGrid"></div>
+    </div>
+
+    <footer>
+      PromptCraft — AI Prompt Studio &nbsp;·&nbsp; Free &amp; No Signup &nbsp;·&nbsp;
+      Veo 3 · Midjourney · Stable Diffusion · Flux · Sora · DALL-E 3 · Runway<br>
+      Powered by Groq AI &nbsp;·&nbsp; History stored locally in your browser
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
